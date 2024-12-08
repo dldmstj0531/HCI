@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문 조사 시작</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d5e7f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            max-width: 900px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+        .left-section {
+            flex: 1;
+            text-align: left;
+            padding: 20px;
+        }
+        .right-section {
+            flex: 1;
+            text-align: left;
+            padding: 20px;
+            background-color: #e3f0fb;
+            border-radius: 15px;
+        }
+        img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            font-size: 1em;
+            margin: 10px 0;
+        }
+        .start-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1em;
+            color: #ffffff;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .start-button:hover {
+            background-color: #357ABD;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>MindLens</h1>
+            <img src="https://cdn.shopify.com/s/files/1/0348/7053/files/Muse2-band-feature.png?v=1681995196" alt="Muse 기기 이미지">
+        </div>
+        <div class="right-section">
+            <h1>지금부터 설문조사를 시작합니다</h1>
+            <ul>
+                <li>&#x2714; 화면을 응시해주십시오</li>
+                <li>&#x2714; 앞으로 다시 넘어갈 수 없습니다</li>
+                <li>&#x2714; 얼굴을 너무 멀리 빼거나 가까이 두지 마십시오</li>
+                <li>&#x2714; 기기를 머리에서 빼지 마십시오</li>
+            </ul>
+            <form method="POST" action="/">
+                <button type="submit" class="start-button">시작하기</button>
+            </form>
+            <form method="GET" action="/logout" style="margin-top: 10px;">
+                <button type="submit" class="start-button">🔒 로그아웃</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

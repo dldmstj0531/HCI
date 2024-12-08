@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d5e7f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            max-width: 800px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            flex-direction: row;
+        }
+        .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .left-section img {
+            max-width: 80%;
+            height: auto;
+        }
+        .left-section h1 {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .right-section {
+            flex: 1;
+            background-color: #e9f4fb;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .right-section h2 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .login-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 15px 30px;
+            font-size: 1em;
+            color: #ffffff;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .login-button:hover {
+            background-color: #357ABD;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 왼쪽 섹션: 웹 이름과 이미지 -->
+        <div class="left-section">
+            <h1>MindLens</h1>
+            <img src="https://cdn.shopify.com/s/files/1/0348/7053/files/Muse2-band-feature.png?v=1681995196" alt="웹 이미지">
+        </div>
+        
+        <!-- 오른쪽 섹션: 로그인 폼 -->
+        <div class="right-section">
+            <h2>로그인</h2>
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+            <form method="POST">
+                <input type="text" name="username" placeholder="사용자명" required>
+                <input type="password" name="password" placeholder="비밀번호" required>
+                <button type="submit" class="login-button">로그인</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

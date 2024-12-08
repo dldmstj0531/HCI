@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분석 중...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            text-align: center;
+            padding: 50px;
+        }
+        .spinner {
+            margin: 20px auto;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #4CAF50;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loading-text {
+            font-size: 1.5em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner"></div>
+    <p class="loading-text">결과를 분석 중입니다. 잠시만 기다려 주세요...</p>
+
+    <script>
+        function checkAnalysisStatus() {
+            fetch('/check_status')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'complete') {
+                        window.location.href = '/result';  // 결과 페이지로 이동
+                    } else {
+                        setTimeout(checkAnalysisStatus, 2000);  // 2초 후 다시 확인
+                    }
+                })
+                .catch(error => console.error('Error checking status:', error));
+        }
+
+        document.addEventListener('DOMContentLoaded', checkAnalysisStatus);
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문 조사</title>
+    <style>
+        .choices {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .choice {
+            margin: 0 100px; /* Increase margin for wider spacing */
+        }
+        .container {
+            max-width: 2100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 200px;
+        }
+        .submit-button {
+            margin-top: 350px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Question {{ question_number }}</h1>
+        <p class="question">{{ question }}</p>
+        <form method="post">
+            <input type="hidden" name="question_number" value="{{ question_number }}">
+            <input type="hidden" name="start_time" value="{{ start_time }}">
+            <div class="choices">
+                {% for choice in choices %}
+                    <label class="choice">
+                        <input type="radio" name="response" value="{{ choice }}" required> {{ choice }}
+                    </label>
+                {% endfor %}
+            </div>
+            <button type="submit" class="submit-button">Next</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문조사 결과</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d5e7f2;
+            text-align: center;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 50px auto;
+            max-width: 800px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        .results-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            gap: 20px;
+
+        }
+        table {
+            border-collapse: collapse;
+            width: 45%;
+            margin: 0 auto 30px auto;
+        }
+        table, th, td {
+            border: 1px solid #333;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .report-button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 30px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .report-button:hover {
+            background-color: #357ABD;
+        }
+        caption {
+            caption-side: top;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>설문조사 결과</h1>
+        <div class="results-container">
+            <table>
+                <caption>&lt;설문 결과&gt;</caption>
+                <tr>
+                    <th>E</th> <th>{{e_per}}%</th> <th>I</th> <th>{{i_per}}%</th>
+                </tr>
+                <tr>
+                    <td>S</td> <td>{{ s_per }}%</td> <td>N</td> <td>{{ n_per }}%</td>
+                </tr>
+                <tr>
+                    <th>F</th> <th>{{ f_per }}%</th> <th>T</th> <th>{{ t_per }}%</th>
+                </tr>
+                <tr>
+                    <td>P</td> <td>{{ p_per }}%</td> <td>J</td> <td>{{ j_per }}%</td>
+                </tr>
+            </table>
+
+
+            {% if adjusted_results %}
+            <table>
+                <caption>&lt;조정된 설문 결과&gt;</caption>
+                <tr>
+                    <th>E</th> <th>{{ adjusted_results.e_per }}%</th> <th>I</th> <th>{{ adjusted_results.i_per }}%</th>
+                </tr>
+                <tr>
+                    <td>S</td> <td>{{ adjusted_results.s_per }}%</td> <td>N</td> <td>{{ adjusted_results.n_per }}%</td>
+                </tr>
+                <tr>
+                    <th>F</th> <th>{{ adjusted_results.f_per }}%</th> <th>T</th> <th>{{ adjusted_results.t_per }}%</th>
+                </tr>
+                <tr>
+                    <td>P</td> <td>{{ adjusted_results.p_per }}%</td> <td>J</td> <td>{{ adjusted_results.j_per }}%</td>
+                </tr>
+            </table>
+            {% endif %}
+        </div>
+        <div class ="button-container">
+            <a href="{{ url_for('download_report') }}" class="report-button">📄 리포트 다운로드</a>
+            <a href="{{ url_for('start_page') }}" class="report-button">🏠 홈으로</a>
+            <a href="{{ url_for('logout') }}" class="report-button">🔒 로그아웃</a>
+        </div>
+    </div>
+</body>
+</html>
